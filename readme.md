@@ -16,7 +16,7 @@ Created by: Dr. Kevin Wang (kevinw@cse.ust.hk)
  
  ## Introduction
  
- You are going to form a team of three to work on a project. The project is about writing a computer game tower defense (TD). Every fraction of second a monster will be generated at the starting position. These monsters will move towards the end-zone.  Once a monster reaches the end zone the game ends and the player lose the game. To avoid the monster reaching the end-zone, the player can use the resources earned in the game to build different types of tower that attacks and destroys monsters. You are given a skeleton code written in Java 11 that allow you to build one tower on the map and generate one monster. This skeleton does not really do anything and you may actually change everything you are given in the project (including not using the skeleton code at all). 
+ You are going to form a team of three to work on a project. The project is about writing a computer game sample.mapElement.tower defense (TD). Every fraction of second a monster will be generated at the starting position. These monsters will move towards the end-zone.  Once a monster reaches the end zone the game ends and the player lose the game. To avoid the monster reaching the end-zone, the player can use the resources earned in the game to build different types of sample.mapElement.tower that attacks and destroys monsters. You are given a skeleton code written in Java 11 that allow you to build one sample.mapElement.tower on the map and generate one monster. This skeleton does not really do anything and you may actually change everything you are given in the project (including not using the skeleton code at all). 
   
 You are advised to read this document carefully and ask your question on Piazza (access via Canvas). We will answer your questions promptly.
  
@@ -36,34 +36,34 @@ Noted that the some tasks are in a hierarchy structure. No point will be awarded
  ### Game Physics
  
  Regardless how you implement the game, there are some ground rules that need to follow. If your task has violated these physics, penalty may be applied to individual or to the whole group. So please take extra attention to these rules.
- * A tower can only be placed on one grid, not crossing the border. 
+ * A sample.mapElement.tower can only be placed on one grid, not crossing the border. 
  * A monster is modeled as a point which should be roughly the center of its icon/grid. In other words, a monster has a size of 1px by 1px.
  * A monster is always moving from a grid to an adjacent grid either horizontally or vertically.
- * The game must not allow a player to build a tower if the player does not have enough resource to build it.
+ * The game must not allow a player to build a sample.mapElement.tower if the player does not have enough resource to build it.
  * When a monster is killed it must be removed from the arena, a certain amount of resource will be given to the player.
- * Each grid can contain at most one tower. When it contains a tower, it cannot contain any monster.
- * No tower shall be able to move. 
+ * Each grid can contain at most one sample.mapElement.tower. When it contains a sample.mapElement.tower, it cannot contain any monster.
+ * No sample.mapElement.tower shall be able to move. 
  * All distance used in the game should be referred as Euclidean distance, in pixels (px). 
  * The width and height of the Arena is 480 px-by-480 px. 
  * All operations by the player must be done by mouse.
- * A tower must have at least the following information: attack power, building cost, shooting range. 
- * A tower cannot attack a monster that is outside its shooting range. When we judge a monster is inside a tower's shooting range, the following distance will be used: the Euclidean distance between the center of the grid of where the tower is built and the center of the monster.
- * The health point (HP) of a monster will be deducted by the attack power of the tower attacking it. When HP is less than or equal to zero a monster is killed. 
- * When there are multiple possible monster a tower can shoot (in range), it should always choose a monster that is nearest to up-left corner of the end-zone ((440, 0) in our demo).
- * It is allowed that multiple towers shoot at a monster at the same time even through only one tower is needed to kill it. This is likely to happen. 
+ * A sample.mapElement.tower must have at least the following information: attack power, building cost, shooting range. 
+ * A sample.mapElement.tower cannot attack a monster that is outside its shooting range. When we judge a monster is inside a sample.mapElement.tower's shooting range, the following distance will be used: the Euclidean distance between the center of the grid of where the sample.mapElement.tower is built and the center of the monster.
+ * The health point (HP) of a monster will be deducted by the attack power of the sample.mapElement.tower attacking it. When HP is less than or equal to zero a monster is killed. 
+ * When there are multiple possible monster a sample.mapElement.tower can shoot (in range), it should always choose a monster that is nearest to up-left corner of the end-zone ((440, 0) in our demo).
+ * It is allowed that multiple towers shoot at a monster at the same time even through only one sample.mapElement.tower is needed to kill it. This is likely to happen. 
 
 #### Rules applies to COMP3111 groups only. 
- * There are two different colors of grids - green or white. A green grid can only contain a tower. A white grid can only contain monsters. Both kinds of grids may cannot change its color in the middle of the game.
+ * There are two different colors of grids - green or white. A green grid can only contain a sample.mapElement.tower. A white grid can only contain monsters. Both kinds of grids may cannot change its color in the middle of the game.
  * A white grid can contain any number of monsters.
- * The game is a turn-based game. In each turn, a player will need to click the button `Next Frame` to run. Then each monster will move certain distance, according to its attributes and status. Each tower may or may not fire, depends on its individual position, attributes, and status etc. In between two clicks of `Next Frame` the player may also allowed to build or destroy towers, whenever resources are enough.
+ * The game is a turn-based game. In each turn, a player will need to click the button `Next Frame` to run. Then each monster will move certain distance, according to its attributes and status. Each sample.mapElement.tower may or may not fire, depends on its individual position, attributes, and status etc. In between two clicks of `Next Frame` the player may also allowed to build or destroy towers, whenever resources are enough.
  * When the word `time` is every used in the task description (e.g. 2.iii) , it refers to one *frame* (a click of `Next Frame`) or several frames. 
 
 
 #### Rules applies to COMP3111-H groups only. 
- * A monster will never move toward a grid with a tower. If a monster is already on its way to a new grid and a part of the monster body is already insider the grid, no tower will be allowed to be built on this new grid. 
- * After building a tower, all monsters on the map should have at least one valid path move toward the end-zone. Thus, the game must not allow a player to build a tower to trap a monster. 
- * Each grid can contain any number of monsters as long as it does not contain a tower.
- * The game is a time-based game. The button `Next Frame` would NOT be tested in grading. It will be served as a debug button for your own interest. There are two methods to start the game: by clicking `Simulate` or `Play`. In either mode monsters will be automatically generated and the monsters will move towards the end-zone, towers will automatically fire if any monsters are in its shooting distance. In `simulate` mode, player is only allowed to build tower before the simulate button is clicked. Once the button is clicked, the player will no be clicking any button until the game is over. In `play` mode, the player is allowed to build or to upgrade tower when the game is running.
+ * A monster will never move toward a grid with a sample.mapElement.tower. If a monster is already on its way to a new grid and a part of the monster sample.body is already insider the grid, no sample.mapElement.tower will be allowed to be built on this new grid. 
+ * After building a sample.mapElement.tower, all monsters on the map should have at least one valid path move toward the end-zone. Thus, the game must not allow a player to build a sample.mapElement.tower to trap a monster. 
+ * Each grid can contain any number of monsters as long as it does not contain a sample.mapElement.tower.
+ * The game is a time-based game. The button `Next Frame` would NOT be tested in grading. It will be served as a debug button for your own interest. There are two methods to start the game: by clicking `Simulate` or `Play`. In either mode monsters will be automatically generated and the monsters will move towards the end-zone, towers will automatically fire if any monsters are in its shooting distance. In `simulate` mode, player is only allowed to build sample.mapElement.tower before the simulate button is clicked. Once the button is clicked, the player will no be clicking any button until the game is over. In `play` mode, the player is allowed to build or to upgrade sample.mapElement.tower when the game is running.
  
 ### Tasks (16 points of project Total)
  
@@ -72,28 +72,28 @@ Noted that the some tasks are in a hierarchy structure. No point will be awarded
     1. Indicate the grid that a monster show up and the grid representing end-zone with png images. 
     The image must shall be shown at the back when there is a monster on the grid. Create/choose your own image. (1)
     1. Allow all types of towers to be built on all green grids using drag and drop gesture. (1)
-        1. When a tower is built, an image of the tower will be placed on the grid. Use the png files 
+        1. When a sample.mapElement.tower is built, an image of the sample.mapElement.tower will be placed on the grid. Use the png files 
         provided under `src\main\resources`. (1)
         1. A fixed amount of resource (e.g. money, or you create your own set of resources.) is deducted 
         and correctly display the remaining amount of resource on GUI screen after building
-        the tower. (1)
-        1. When the mouse pointer is moved over a built tower, all information related to the 
-        tower must be displayed on the graphic interface (`System.out.println` is not acceptable)) (1)
-            1. Furthermore, the pixels of the area that are inside the tower's range are shaded (you might use a circle UI). (1)
-                1. Furthermore, when the mouse is moved away from the tower, the shaded area will be restored (you are not allowed to dismiss the information/shaded pixel by clicking button, e.g. click a message box). (1)
-        1. When there is not enough resource to build a tower, the program should prompt a dialog box to warn the player (1)
-        1. When a tower is clicked, the player will be provided with two options: `destroy the tower` and `upgrade`. (1)
-            1. Furthermore, when `destroy the tower` is selected, the tower will be destroyed. (1)
+        the sample.mapElement.tower. (1)
+        1. When the mouse pointer is moved over a built sample.mapElement.tower, all information related to the 
+        sample.mapElement.tower must be displayed on the graphic interface (`System.out.println` is not acceptable)) (1)
+            1. Furthermore, the pixels of the area that are inside the sample.mapElement.tower's range are shaded (you might use a circle UI). (1)
+                1. Furthermore, when the mouse is moved away from the sample.mapElement.tower, the shaded area will be restored (you are not allowed to dismiss the information/shaded pixel by clicking button, e.g. click a message box). (1)
+        1. When there is not enough resource to build a sample.mapElement.tower, the program should prompt a dialog box to warn the player (1)
+        1. When a sample.mapElement.tower is clicked, the player will be provided with two options: `destroy the sample.mapElement.tower` and `upgrade`. (1)
+            1. Furthermore, when `destroy the sample.mapElement.tower` is selected, the sample.mapElement.tower will be destroyed. (1)
             1. Furthermore, when `upgrade` is selected, and in case there is enough resource (you can determine the resources needed) to upgrade, it will invoke the function that corresponding to 
-            upgrading the tower and a line `XXX tower is being upgraded` is printed on the console. (1)
-                1. Furthermore, in case there isn't enough resource to upgrade the tower, the upgrade will be aborted and a line `not enough resource to upgrade XXX tower` is printed on the console. (1)
+            upgrading the sample.mapElement.tower and a line `XXX sample.mapElement.tower is being upgraded` is printed on the console. (1)
+                1. Furthermore, in case there isn't enough resource to upgrade the sample.mapElement.tower, the upgrade will be aborted and a line `not enough resource to upgrade XXX sample.mapElement.tower` is printed on the console. (1)
     1.  Logging the following information using `System.out.println`:
         1. When a monster is generated. Log its type and HP in the format `<type>:<HP> generated` (1)
-        1. When a monster is attacked. Log the type and position tower attacks it and the position of the monster in the format `<tower_type>@(<x>.<y>) -> <monster_type>@(<x>, <y>)` (1)
-            1. Furthermore, represent the attack in the GUI so that the monster and the tower involved can be visually identified without reading the log. (1)
+        1. When a monster is attacked. Log the type and position sample.mapElement.tower attacks it and the position of the monster in the format `<tower_type>@(<x>.<y>) -> <monster_type>@(<x>, <y>)` (1)
+            1. Furthermore, represent the attack in the GUI so that the monster and the sample.mapElement.tower involved can be visually identified without reading the log. (1)
 1.  Towers (15)
     1.  All towers built in the arena will shoot a monster automatically which is inside its range (unless all towers are impossible to attack, e.g. out of range, in cool down etc). (1)      
-    1.  Implement Basic Tower that has a shooting range [0,65] pixels. You can decide the attack power and other parameters of the tower. (1)
+    1.  Implement Basic Tower that has a shooting range [0,65] pixels. You can decide the attack power and other parameters of the sample.mapElement.tower. (1)
         1. Implement the upgrade function of Basic Tower that increase the attack power of the basic Tower. (1)
     1.  Implement Ice Tower that will make monster move slower for a period of time (Take a human noticeable longer time to move without making other monster move slower). You can determine other attributes of Ice Tower. (1)
         1. Implement the upgrade function of Ice Tower that increase the duration of the monster being slowed. (1)
@@ -104,16 +104,16 @@ Noted that the some tasks are in a hierarchy structure. No point will be awarded
             1. Furthermore, implement the upgrade function of Catapult that the reload time/cold down time is shorten. (1)
     1.  Implement Laser Tower that:
         1. it consumes some resources to attack a monster. (1)
-        1. draw a line from the center to the tower to the monster and extend beyond until it reach the edge of the Arena. (2)
+        1. draw a line from the center to the sample.mapElement.tower to the monster and extend beyond until it reach the edge of the Arena. (2)
             1. Furthermore, all monsters on the line or within 3px away from the line will receive damage. (1)
-        1. Implement the upgrade function of Laser Tower that increase attack power of the tower. (1)   
-    1. *noted: you are allowed to determine the parameters and cost of your towers when it is not specified. For instance, we did not say if an Ice tower will give damage or not and you can decide that.*
+        1. Implement the upgrade function of Laser Tower that increase attack power of the sample.mapElement.tower. (1)   
+    1. *noted: you are allowed to determine the parameters and cost of your towers when it is not specified. For instance, we did not say if an Ice sample.mapElement.tower will give damage or not and you can decide that.*
 1. Monsters (15)
     1.  In every fixed period of time, one or more monsters will be generated in the arena from a fixed grid that the monster shows up. (2)
         1. Furthermore, along the time elapsed the *stronger* the monster will be generated so that the difficulty of the game increase. *Stronger* may refer to more HP, moving faster, or any factors that make the game difficult to play. You can make your own definition of *stronger*. (1)
     1.  Monsters on the arena will move towards the end-zone automatically. (1)
-        1. Furthermore, if no tower is built, the monster will be successfully reach the end-zone and cause the game over (player lose). A single line `Gameover` will be printed to console. (1)
-            1. Furthermore, if the game is over, both monster generation and tower shooting should stop and a dialog box will pop up to notify the game is over (1)
+        1. Furthermore, if no sample.mapElement.tower is built, the monster will be successfully reach the end-zone and cause the game over (player lose). A single line `Gameover` will be printed to console. (1)
+            1. Furthermore, if the game is over, both monster generation and sample.mapElement.tower shooting should stop and a dialog box will pop up to notify the game is over (1)
     1.  Represent a monster with png images (`fox.png`, `unicorn.png`, `penguin.png`) provided under `src\main\resources`. (1)
         1. Furthermore, when a monster is killed (HP reach 0), its image will be replaced by `collision.png`. (1)
             1. Furthermore, the dead monster will be removed from the arena automatically. (1)
@@ -139,7 +139,7 @@ Noted that the some tasks are in a hierarchy structure. No point will be awarded
         to the end-zone, the stone will be thrown towards the one that hits more monsters. If the same number of monsters
         are hit by the stone, choose any monster you wish. (1)
             1. Create a test case in JUnit to show your algorithm. (1)
-        1. *Note: a stone can be thrown to a grid that contains a tower if it make sense. The tower will not be destroy because of that.*
+        1. *Note: a stone can be thrown to a grid that contains a sample.mapElement.tower if it make sense. The sample.mapElement.tower will not be destroy because of that.*
 1.  Monster
     1. All monster are able to walk towards the end-zone with a shortest path (choose any path if there are two shortest paths). (1)
         1. Furthermore, Fox is a very wise monster that will not simply walk a shortest path. Fox will try to 
